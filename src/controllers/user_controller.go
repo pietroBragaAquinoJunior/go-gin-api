@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	 "github.com/pietroBragaAquinoJunior/go-gin-api/src/user"
+	"github.com/pietroBragaAquinoJunior/go-gin-api/src/models"
 )
 
 func SetupRouter() *gin.Engine {
@@ -15,7 +15,7 @@ func SetupRouter() *gin.Engine {
 
 func PostUser(r *gin.Engine) *gin.Engine {
 	r.POST("/user/add", func(c *gin.Context) {
-		var user User
+		var user models.User
 		c.BindJSON(&user)
 		c.JSON(200, user)
 	})

@@ -1,12 +1,11 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/pietroBragaAquinoJunior/go-gin-api/src/controllers"
 )
 
-
 func main() {
-	r := setupRouter()
-	r = postUser(r)
+	r := controllers.SetupRouter()
+	r = controllers.PostUser(r)
 	r.Run(":8080")
 }

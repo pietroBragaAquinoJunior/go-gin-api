@@ -1,16 +1,19 @@
 package tests
 
 import (
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/pietroBragaAquinoJunior/go-gin-api/src/controllers"
+	"github.com/pietroBragaAquinoJunior/go-gin-api/src/models"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestPingRoute(t *testing.T) {
-	router := SetupRouter()
+	router := controllers.SetupRouter()
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/ping", nil)
@@ -22,13 +25,13 @@ func TestPingRoute(t *testing.T) {
 
 // Test for POST /user/add
 func TestPostUser(t *testing.T) {
-	router := SetupRouter()
-	router = PostUser(router)
+	router := controllers.SetupRouter()
+	router = controllers.PostUser(router)
 
 	w := httptest.NewRecorder()
 
 	// Create an example user for testing
-	exampleUser := User{
+	exampleUser := models.User{
 		Username: "test_name",
 		Gender:   "male",
 	}
